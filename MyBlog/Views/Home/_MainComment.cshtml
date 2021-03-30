@@ -1,0 +1,21 @@
+﻿@model CommentViewModel
+@{
+}
+
+<div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto mb-4">
+        <form id="partialform" method="post" asp-action="Comment" asp-controller="Home" data-ajax="true"
+              data-ajax-update="#partialform" data-ajax-mode="replace">
+            <div class="form-group">
+                <textarea class="form-control" id="" rows="3" placeholder="التعليق" asp-for="Message" required></textarea>
+            </div>
+            <input asp-for="PostID" type="hidden" />
+            <input asp-for="MainCommentId" type="hidden" />
+            <div class="col-md-12 text-center mt-2">
+                <input value="أضف تعليقا" type="submit" class="btn btn-outline-dark btn-lg" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

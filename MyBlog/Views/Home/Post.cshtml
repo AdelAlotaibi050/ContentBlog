@@ -1,0 +1,76 @@
+﻿@model Post
+@{
+}
+<div class="shadow-lg p-3 mb-5 bg-white rounded">
+    <!-- Main Content -->
+    <div asp-validation-summary="All"></div>
+    <div class="container" style="padding-top: 100px;">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-preview">
+
+                <h1 class="post-title text-right">
+                    @Model.Title
+
+                </h1>
+                <hr />
+                <p class="h5 text-right">
+                    @Model.Body
+                </p>
+                <p class="post-meta text-right h6" style="font-weight:bold;">
+                    @Model.DateTime.ToShortDateString()
+                </p>
+            </div>
+            <hr>
+        </div>
+    </div>
+
+    @{
+        await Html.RenderPartialAsync("_MainComment",
+        new CommentViewModel { PostID = Model.Id, MainCommentId = 0 });
+    }
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="blog-comment">
+                    <h3 class="text-right">التعليقات</h3>
+                    <ul class="comments">
+                        <li class="clearfix">
+                            @foreach (var comment in Model.MainComments)
+                            {
+                                <div class="post-comments">
+                                    <p class="meta text-right">@comment.Created.ToLongDateString() -  مجهول</p>
+                                    <p>
+                                        @comment.Message
+                                    </p>
+                                </div>
+                                <hr/>
+                                foreach (var subComment in comment.SubComments)
+                                {
+                                    <ul class="comments">
+                                        <li>
+                                            <div class="post-sub-comments">
+                                                <p class="meta text-right">@subComment.Created.ToLongDateString() - مجهول</p>
+                                                <p>
+                                                    @subComment.Message
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                }
+                                {
+                                    await Html.RenderPartialAsync("_MainComment",
+                                    new CommentViewModel { PostID = Model.Id, MainCommentId = comment.Id });
+                                }
+
+                            }
+
+
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

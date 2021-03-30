@@ -1,0 +1,27 @@
+﻿@model LoginViewModel
+@{
+}
+@Html.ValidationSummary(false)
+<span asp-validation-summary="All" style="float:right; color:red;">
+
+</span>
+<form asp-action="Login" asp-controller="Auth" method="post">
+    <div class="form-group">
+        <input type="text" class="form-control" id=""
+               placeholder="اسم المستخدم" asp-for="UserName">
+    </div>
+    <span asp-validation-for="UserName" style="float:right; color:red;">
+
+    </span>
+    <div class="form-group">
+        <input class="form-control" type="password"
+               id="" placeholder="الرقم السري" asp-for="Password" />
+    </div>
+
+    <span asp-validation-for="Password" style="float:right; color:red;">
+
+    </span>
+    <div class="col-md-12 text-center">
+        <input value="تسجيل دخول" type="submit" class="btn btn-outline-dark btn-lg" />
+    </div>
+</form>

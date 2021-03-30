@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Post>
+@{
+
+}
+
+
+<!-- Main Content -->
+<div class="container" style="padding-top:100px;">
+    <div class="row">
+        @foreach (var post in Model)
+        {
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-preview">
+                        <h3 class="post-title text-right">
+                            @post.Title
+
+                        </h3>
+
+
+
+                    <a asp-action="Edit" asp-controller="Panel" class="btn btn-success" asp-route-id="@post.Id">
+                        تعديل
+
+                    </a>
+
+
+                    <a asp-action="Remove" asp-controller="Panel" class="btn btn-danger" asp-route-id="@post.Id">
+                        حذف
+
+                    </a>
+
+                    <p class="post-meta text-right">
+                        @post.DateTime
+
+                    </p>
+                </div>
+                <hr>
+
+            </div>
+
+        }
+
+    </div>
+</div>
+
+<hr>

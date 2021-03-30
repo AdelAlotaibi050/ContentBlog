@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+
+<html dir="rtl">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.rtl.min.css" integrity="sha384-trxYGD5BY4TyBTvU5H23FalSCYwpLA0vWEvXXGm5eytyztxb+97WzzY+IWDOSbav" crossorigin="anonymous">
+    @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>@ViewBag.Title</title>*@
+    <style>
+        input[type="text"]::placeholder {
+            text-align: right;
+        }
+
+        textarea::placeholder {
+            text-align: right;
+        }
+
+        body {
+            display: grid;
+            place-items: center;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .blog-comment {
+            padding-left: 15%;
+            padding-right: 15%;
+        }
+
+            .blog-comment ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            .blog-comment .post-comments {
+                border: 1px solid #eee;
+                margin-bottom: 20px;
+                margin-left: 2rem;
+                padding: 10px 20px;
+                position: relative;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                -o-border-radius: 4px;
+                border-radius: 4px;
+                background: #fff;
+                color: #6b6e80;
+                position: relative;
+            }
+
+            .blog-comment .post-sub-comments {
+                border: 1px solid #eee;
+                margin-bottom: 20px;
+                margin-right: 2rem;
+                padding: 10px 20px;
+                position: relative;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                -o-border-radius: 4px;
+                border-radius: 4px;
+                background: #fff;
+                color: #6b6e80;
+                position: relative;
+            }
+
+                .blog-comment .meta {
+                    font-size: 13px;
+                    color: #aaaaaa;
+                    padding-bottom: 8px;
+                    margin-bottom: 10px !important;
+                    border-bottom: 1px solid #eee;
+                }
+
+            .blog-comment ul.comments ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            .blog-comment-form {
+                padding-left: 15%;
+                padding-right: 15%;
+                padding-top: 40px;
+            }
+
+            .blog-comment h3,
+            .blog-comment-form h3 {
+                margin-bottom: 40px;
+                font-size: 26px;
+                line-height: 30px;
+                font-weight: 800;
+            }
+       
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand h4" href="index.html">مدونة المحتوى</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="">
+                <ul class="navbar-nav ml-auto">
+
+
+                    <li class="nav-item">
+                        <a class="nav-link h5 " asp-action="Index" asp-controller="Home">الرئيسية</a>
+                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link h5 " asp-action="Edit" asp-controller="Panel">إضافة</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link h5 " asp-action="Index" asp-controller="Panel">صفحة الأدمن</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link h5 " asp-action="Logout" asp-controller="Auth">تسجيل خروج</a>
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link h5 " asp-action="Login" asp-controller="Auth">تسجيل دخول</a>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top:100px;">
+        @RenderBody()
+    </div>
+</body>
+</html>

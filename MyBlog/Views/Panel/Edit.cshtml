@@ -1,0 +1,27 @@
+﻿@model Post
+
+@{
+
+}
+<form method="post" asp-action="Edit" asp-controller="Panel">
+    <div class="form-group">
+        <input type="text" class="form-control" id="" placeholder="العنوان" asp-for="Title">
+    </div>
+    <span asp-validation-for="Title" style="color: red; float: right;">
+
+    </span>
+    <input asp-for="Id" type="hidden" />
+
+    <div class="form-group">
+        <textarea class="form-control" id="" rows="3" placeholder="المقال" asp-for="Body"></textarea>
+    </div>
+
+    <span asp-validation-for="Title" style="color:red; float:right;">
+
+    </span>
+    <div class="col-md-12 text-center">
+        <input value="إضافة" type="submit" class="btn btn-outline-dark btn-lg" />
+    </div>
+</form>
+
+
